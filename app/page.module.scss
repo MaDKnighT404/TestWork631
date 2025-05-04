@@ -1,0 +1,24 @@
+.page {
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+
+  font-family: var(--font-geist-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+  }
+}
+
+.heroSection {
+  width: 100%;
+  min-height: 300px;
+  position: relative;
+  background-image: url("/hero_section.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 1.5rem;
+  padding-top: 3rem;
+}
