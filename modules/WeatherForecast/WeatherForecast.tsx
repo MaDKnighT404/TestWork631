@@ -12,12 +12,16 @@ export default function WeatherForecast({ singleDay = false }: { singleDay?: boo
   if (!weatherForecastData) return null;
 
   const filteredWeatherForecast = selectWeatherForecastPeriod(weatherForecastData, singleDay);
+  const title = singleDay
+    ? "Weather forecast by locations for next 9 hours"
+    : "Weather forecast by locations for 5 days";
 
   return (
-    <div className="weather-forecast mt-4">
-      <h2>
+    <div className="mt-4">
+      <h2 className="text-center">{title}</h2>
+      <h3 className="mt-5">
         {weatherForecastData.city.name}, {weatherForecastData.city.country}
-      </h2>
+      </h3>
       <div className="row mt-3">
         {filteredWeatherForecast.map((item, index) => (
           <div key={index} className={`col-${singleDay ? "12 col-md-3 mb-3" : "12 col-md-2 mb-3"}`}>
@@ -27,12 +31,14 @@ export default function WeatherForecast({ singleDay = false }: { singleDay?: boo
                   {new Date(item.dt * 1000).toLocaleTimeString("en-US", {
                     hour: "2-digit",
                     minute: "2-digit",
+                    timeZone: "UTC",
                   })}
                 </h5>
                 <h6 className="card-subtitle mb-2 text-muted">
                   {new Date(item.dt * 1000).toLocaleDateString("en-US", {
                     day: "numeric",
                     month: "short",
+                    timeZone: "UTC",
                   })}
                 </h6>
                 <div className="weather-icon">
