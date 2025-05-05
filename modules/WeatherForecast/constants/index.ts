@@ -1,0 +1,5 @@
+export const FORECAST_CONSTANTS = {
+  START_INDEX: 0,
+  HOURS_12_COUNT: 4,
+  DAILY_INDICES: [0, 8, 16, 24, 32, 40],
+};
