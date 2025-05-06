@@ -1,5 +1,10 @@
+import FavoriteCities from "@/modules/FavoriteCities/FavoriteCities";
 import React from "react";
 
 export default function FavoritesPage() {
-  return <div>FavoritesPage</div>;
+  return (
+    <section>
+      <FavoriteCities />
+    </section>
+  );
 }
