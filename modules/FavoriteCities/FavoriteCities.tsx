@@ -42,11 +42,11 @@ export default function FavoriteCities() {
       <h2 className="text-center mt-4">Your favorite cities</h2>
       <div className="position-relative">
         {loading && <Loader />}
-        <ul className="row list-group mt-4">
+        <ul className="list-group mt-4 container mx-auto px-4">
           {favoriteCities.map((el) => (
             <li
               key={el.name}
-              className="d-flex justify-content-between align-items-center col-6 list-group-item mx-auto"
+              className="d-flex justify-content-between align-items-center  col-12 col-xl-8 list-group-item mx-auto"
               style={{ cursor: "pointer" }}
               onClick={() => handleShowForecast(el)}
             >
