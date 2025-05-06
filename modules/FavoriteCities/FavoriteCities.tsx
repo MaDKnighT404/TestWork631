@@ -1,16 +1,15 @@
 "use client";
+import { redirect } from "next/navigation";
 
-import { useRouter } from "next/navigation";
-import { useWeatherData } from "../SearchCityForecast/hooks/useWeatherData";
-import { useWeatherForecastStore } from "../WeatherForecast/store";
-import { useFavoriteCitiesStore } from "./store";
-import { FavoriteCity } from "./types";
 import Loader from "@/shared/Loader/Loader";
-import { useState } from "react";
+
+import { useWeatherData } from "../SearchCityForecast/hooks/useWeatherData";
+import { useFavoriteCitiesStore } from "./store";
+import { useWeatherForecastStore } from "../WeatherForecast/store";
+
+import type { FavoriteCity } from "./types";
 
 export default function FavoriteCities() {
-  const router = useRouter();
-  const [redirecting, setRedirecting] = useState(false);
   const { favoriteCities, removeFavoriteCity } = useFavoriteCitiesStore();
   const { loading, error, fetchWeatherData } = useWeatherData();
   const { setWeatherForecastData } = useWeatherForecastStore();
@@ -20,26 +19,17 @@ export default function FavoriteCities() {
   };
 
   const handleShowForecast = async (city: FavoriteCity) => {
-    try {
-      setRedirecting(true);
-      const data = await fetchWeatherData(city.name);
-      setWeatherForecastData(data);
-      router.push(`/forecast`);
-    } catch (error) {
-      console.error("Error fetching weather data:", error);
-    } finally {
-      setRedirecting(false);
-    }
+    const data = await fetchWeatherData(city.name);
+    setWeatherForecastData(data);
+    redirect(`/forecast`);
   };
-
-  const showLoader = loading || redirecting;
 
   return (
     <>
       {error && <div className="text-center">Error: {error}</div>}
       <h2 className="text-center mt-4">Your favorite cities</h2>
       <div className="position-relative">
-        {showLoader && <Loader />}
+        {loading && <Loader />}
         <ul className="row list-group mt-4">
           {favoriteCities.map((el) => (
             <li
@@ -52,8 +42,8 @@ export default function FavoriteCities() {
                 {el.name} {`(${el.lat} - ${el.lon})`}
               </p>
               <button
-                disabled={showLoader}
-                className={`btn btn-${showLoader ? "secondary" : "danger"}`}
+                disabled={loading}
+                className={`btn btn-${loading ? "secondary" : "danger"}`}
                 onClick={(e) => {
                   e.stopPropagation();
                   handleRemoveFavoriteCity(el);
