@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Деплой
 
-## Getting Started
+https://weather-app-omega-one-10.vercel.app/
 
-First, run the development server:
+## Запуск проекта локально
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- добавить файл .env
+- внутри файла добавить переменную с ключом из openweather api (https://home.openweathermap.org/api_keys)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- OPENWEATHER_API_KEY= {ваш ключ}
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## О приложении
 
-## Learn More
+Приложение позволяет просматривать погоду в выбранном городе.   
 
-To learn more about Next.js, take a look at the following resources:
+### Основные возможности
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Просмотр погоды в выбранном городе на ближайшее время
+- Просмотр погоды в выбранном городе на ближайшие 5 дней
+- Сохранение городов в избранное
+- Сохраненные города отображаются даже после перезагрузки страницы
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Особенности
 
-## Deploy on Vercel
+- в связи с установленным техническим заданием, определение погоды происходит только на главной странице. В связи с этим, страница с прогнозом погоды на несколько дней не доступна, пока не выбран город.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Технологии
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js
+- TypeScript
+- React
+- Bootstrap
+- axios
+- zustand
