@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { fetchWeatherData } from "../api/weatherApi";
-
 import { validateCityName } from "../utils/validators";
 
 export const useWeatherData = () => {

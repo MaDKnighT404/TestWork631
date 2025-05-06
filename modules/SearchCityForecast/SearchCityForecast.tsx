@@ -1,7 +1,6 @@
 "use client";
 
-import { useWeatherForecastStore } from "../WeatherForecast/Store";
-
+import { useWeatherForecastStore } from "../WeatherForecast/store";
 import { useWeatherData } from "./hooks/useWeatherData";
 
 export default function SearchCityForecast() {

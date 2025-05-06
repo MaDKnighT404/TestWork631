@@ -1,7 +1,5 @@
 const CITY_NAME_REGEX = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
-
 const MIN_CITY_NAME_LENGTH = 2;
-
 const MAX_CITY_NAME_LENGTH = 85;
 
 export const validateCityName = (cityName: string): { isValid: boolean; errorMessage?: string } => {
