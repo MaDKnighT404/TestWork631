@@ -8,6 +8,7 @@ import { useFavoriteCitiesStore } from "./store";
 import { useWeatherForecastStore } from "../WeatherForecast/store";
 
 import type { FavoriteCity } from "./types";
+import Link from "next/link";
 
 export default function FavoriteCities() {
   const { favoriteCities, removeFavoriteCity } = useFavoriteCitiesStore();
@@ -23,6 +24,17 @@ export default function FavoriteCities() {
     setWeatherForecastData(data);
     redirect(`/forecast`);
   };
+
+  if (favoriteCities.length === 0) {
+    return (
+      <div className="text-center mt-5">
+        <h2>You have no favorite cities yet</h2>
+        <Link className="btn btn-primary mt-3" href="/">
+          Try to add some
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <>
